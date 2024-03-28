@@ -118,7 +118,7 @@ const deleteMessage = async(req,res) =>{
         const result = await instanceOfAdm.deleteMessageService(id)
 
         if(result === 'mensagem não encontrada'){
-            res.status(200).json({error: `mensagem ${ERRORS.NOT_FOUND}`})
+           return res.status(404).json({error: `mensagem ${ERRORS.NOT_FOUND}`})
         }
 
         res.status(200).json({message: `mensagem ${SUCCESS.DELETED}`})

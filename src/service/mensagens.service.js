@@ -62,7 +62,7 @@ export class MensagemService{
 
     async showMessagesService(){
         try {
-            MensagemEntity.sync()
+          await  MensagemEntity.sync()
             const mensagens = await MensagemEntity.findAll({
                 attributes:{
                     exclude: ["userid"]
@@ -80,7 +80,7 @@ export class MensagemService{
 
     async updateMessageService(id,messageid,message){
         try {
-            MensagemEntity.sync()
+            await  MensagemEntity.sync()
             const messageExists = await MensagemEntity.findOne({
                 where:{
                     userid: id,
@@ -104,6 +104,30 @@ export class MensagemService{
                 }
             })
             return updatedMessage
+
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteMessageService(id,messageid){
+        try {
+           await MensagemEntity.sync()
+
+           const messageExists = await MensagemEntity.findOne({
+            where:{
+                userid: id,
+                id: messageid
+            }
+        })
+
+        if(!messageExists){
+            return 'não encontrada'
+        }
+
+        await messageExists.destroy()
+
+        return 'deleted'
 
         } catch (error) {
             throw error

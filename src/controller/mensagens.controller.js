@@ -95,5 +95,25 @@ const updateMessage = async (req,res) =>{
     }
 }
 
+const deleteMessage = async(req,res) =>{
+    try {
+        const { messageid } = req.params
 
-export { createMessage, addLike, showAllMessages, updateMessage }
+        const id = req.userid
+
+        const result = await instanceOfMessageService.deleteMessageService(id,messageid)
+
+        if(result === 'não encontrada'){
+            return res.status(404).json({error: `mensagem ${ERRORS.NOT_FOUND}`})
+        }
+
+        res.status(200).json({message: `mensagem ${SUCCESS.DELETED}`})
+
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
+
+
+
+export { createMessage, addLike, showAllMessages, updateMessage, deleteMessage }
