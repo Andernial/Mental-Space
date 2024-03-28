@@ -35,7 +35,11 @@ export const UserEntity = database.define('User',{
     
         unique: {
             msg: 'Este endereço de e-mail já está em uso.'
-        }
+        },
+
+        isEmail: {
+            msg: 'O campo deve ser um endereço de email válido'
+          }
     },
     password:{
         type: DataTypes.STRING(32),

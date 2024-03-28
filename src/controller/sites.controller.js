@@ -1,20 +1,40 @@
-// import { readFile } from 'fs/promises'
-
-// const filePath = new URL('../Dados.json', import.meta.url);
-// const data = await readFile(filePath, 'utf-8');
-// const jsonData = JSON.parse(data);
+import { SiteService } from "../service/site.service.js"
+import { ERRORS } from "../shared/messages.js"
 
 
-// function returnUrl() {
-//     let url = jsonData.Sites
-//     return url
-// }
+
+const instaceOfSiteService = new SiteService()
+
+const returnSites = async(req,res) =>{
+    try {
+        const result = await instaceOfSiteService.returnSiteService()
+
+       
+        if(result == 'não encontrada'){
+           return res.status(404).json({message:`erro ${ERRORS.NOT_FOUND}`})
+        }
+
+        res.status(200).json({sites: result})
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
 
 
-// function returnUrlHelp() {
-//     let url = jsonData.sitesDeAjuda
-//     return url
-// }
+const returnSitesDeAjuda = async(req,res) =>{
+    try {
+        const result = await instaceOfSiteService.returnSiteDeAjudaService()
+
+       
+        if(result == 'não encontrada'){
+           return res.status(404).json({message:`erro ${ERRORS.NOT_FOUND}`})
+        }
+
+        res.status(200).json({sites: result})
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
 
 
-export {  }
+export { returnSites, returnSitesDeAjuda }
