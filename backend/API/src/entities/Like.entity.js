@@ -1,6 +1,6 @@
 import { sequelize as database } from "../database/connection.js";
 import { UserEntity } from "./User.entity.js";
-import { MensagemEntity } from "./mensagens.entity.js";
+import { MensagemEntity } from "./Mensagens.entity.js";
 
 
 export const LikeEntity = database.define('Like', {});
