@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { AdmEntity } from "../entities/Adm.entity.js";
 import { SECRET } from '../middlewares/auth.js';
 import { BlackListedTokenEntity } from '../entities/BlackListedToken.entity.js';
-import { MensagemEntity } from '../entities/mensagens.entity.js';
+import { MensagemEntity } from '../entities/Mensagens.entity.js';
 import { UserEntity } from '../entities/User.entity.js';
 
 export class AdmService{
