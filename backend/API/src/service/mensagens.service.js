@@ -1,5 +1,5 @@
 import { UserEntity } from "../entities/User.entity.js"
-import { MensagemEntity } from "../entities/mensagens.entity.js"
+import { MensagemEntity } from "../entities/Mensagens.entity.js"
 import { LikeEntity } from "../entities/Like.entity.js"
 
 
