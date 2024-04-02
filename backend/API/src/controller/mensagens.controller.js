@@ -9,25 +9,25 @@ const instanceOfMessageService = new MensagemService()
 
 const createMessage = async (req, res) => {
     try {
-        const {  message } = req.body
+        const { message } = req.body
         const userid = req.userid
-        const result = await instanceOfMessageService.createMessageService(userid,message)
+        const result = await instanceOfMessageService.createMessageService(userid, message)
 
-        
+
 
         res
             .status(201)
             .json({ resultado: `Mensagem ${SUCCESS.CREATED}`, mensagem: result })
     } catch (error) {
 
-        if(error.name === 'SequelizeValidationError' ){
+        if (error.name === 'SequelizeValidationError') {
             const errorMessage = error.errors.map(err => err.message)
-            return res.status(422).json({error: errorMessage})
+            return res.status(422).json({ error: errorMessage })
         }
 
-        if(error.name === 'SequelizeUniqueConstraintError'){
+        if (error.name === 'SequelizeUniqueConstraintError') {
             const errorMessage = error.errors.map(err => err.message)
-           return  res.status(409).json({error: errorMessage})
+            return res.status(409).json({ error: errorMessage })
         }
 
         res.status(400).json(error.message)
@@ -35,19 +35,19 @@ const createMessage = async (req, res) => {
 
 }
 
-const addLike = async (req,res) =>{
+const addLike = async (req, res) => {
     try {
         const { messageid } = req.params
-        
+
 
         const userid = req.userid
 
-        const result = await instanceOfMessageService.togleLike(userid,messageid)
+        const result = await instanceOfMessageService.togleLike(userid, messageid)
 
-        if(result === 'like adicionado'){
-            return res.status(200).json({message: 'like adicionado'})
+        if (result === 'like adicionado') {
+            return res.status(200).json({ message: 'like adicionado' })
         }
-        res.status(200).json({message: 'like removido'})
+        res.status(200).json({ message: 'like removido' })
 
     } catch (error) {
         console.error(error);
@@ -55,74 +55,74 @@ const addLike = async (req,res) =>{
     }
 }
 
-const showAllMessages = async (req,res) => {
+const showAllMessages = async (req, res) => {
     try {
-        const result = await instanceOfMessageService.showMessagesService() 
+        const result = await instanceOfMessageService.showMessagesService()
 
-        if(result === 'não encontrada'){
-            return  res.status(404).json({messages: 'nenhuma mensagem encontrada '})
+        if (result === 'não encontrada') {
+            return res.status(404).json({ messages: 'nenhuma mensagem encontrada ' })
         }
 
-        res.status(200).json({messages: result})
+        res.status(200).json({ messages: result })
     } catch (error) {
         res.status(400).json(error.message)
     }
 }
 
-const showMyMessages = async (req,res) => {
+const showMyMessages = async (req, res) => {
     try {
         const id = req.userid
 
 
         const result = await instanceOfMessageService.showMyMessagesService(id)
 
-        if(result === 'nenhuma mensagem encontrada !'){
-            return  res.status(404).json({messages: 'nenhuma mensagem encontrada'})
+        if (result === 'nenhuma mensagem encontrada !') {
+            return res.status(404).json({ messages: 'nenhuma mensagem encontrada' })
         }
 
-        res.status(200).json({messages: result})
-        
-    } catch (error) {
-         res.status(400).json(error.message)
-    }
-}
-
-const updateMessage = async (req,res) =>{
-    try {
-        const { messageid } = req.params
-        const { message } = req.body
-        const id = req.userid
-        
-        if(!message){
-            return res.status(400).json({message: 'dados faltando'})
-        }
-
-        const result = await instanceOfMessageService.updateMessageService(id,messageid,message)
-
-        if(result === 'não encontrada'){
-            return res.status(404).json({message: `mensagem ${ERRORS.NOT_FOUND}`})
-        }
-
-        res.status(200).json({sucess: `mensagem ${SUCCESS.UPDATED} `, message: result})
+        res.status(200).json({ messages: result })
 
     } catch (error) {
         res.status(400).json(error.message)
     }
 }
 
-const deleteMessage = async(req,res) =>{
+const updateMessage = async (req, res) => {
+    try {
+        const { messageid } = req.params
+        const { message } = req.body
+        const id = req.userid
+
+        if (!message) {
+            return res.status(400).json({ message: 'dados faltando' })
+        }
+
+        const result = await instanceOfMessageService.updateMessageService(id, messageid, message)
+
+        if (result === 'não encontrada') {
+            return res.status(404).json({ message: `mensagem ${ERRORS.NOT_FOUND}` })
+        }
+
+        res.status(200).json({ sucess: `mensagem ${SUCCESS.UPDATED} `, message: result })
+
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+}
+
+const deleteMessage = async (req, res) => {
     try {
         const { messageid } = req.params
 
         const id = req.userid
 
-        const result = await instanceOfMessageService.deleteMessageService(id,messageid)
+        const result = await instanceOfMessageService.deleteMessageService(id, messageid)
 
-        if(result === 'não encontrada'){
-            return res.status(404).json({error: `mensagem ${ERRORS.NOT_FOUND}`})
+        if (result === 'não encontrada') {
+            return res.status(404).json({ error: `mensagem ${ERRORS.NOT_FOUND}` })
         }
 
-        res.status(200).json({message: `mensagem ${SUCCESS.DELETED}`})
+        res.status(200).json({ message: `mensagem ${SUCCESS.DELETED}` })
 
     } catch (error) {
         res.status(400).json(error.message)

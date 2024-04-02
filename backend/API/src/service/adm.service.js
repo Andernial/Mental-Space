@@ -3,6 +3,7 @@ import { AdmEntity } from "../entities/Adm.entity.js";
 import { SECRET } from '../middlewares/auth.js';
 import { BlackListedTokenEntity } from '../entities/BlackListedToken.entity.js';
 import { MensagemEntity } from '../entities/mensagens.entity.js';
+import { UserEntity } from '../entities/User.entity.js';
 
 export class AdmService{
     async LoginAdmService(name,password){
@@ -42,6 +43,27 @@ export class AdmService{
             throw error
         }
     };
+
+    async RegisterFirstAdm(name,password){
+        try {
+            await AdmEntity.sync()
+
+            const allAdm = await AdmEntity.findAll()
+            console.log('adms no banco: ', allAdm)
+
+            if(allAdm.length){
+                return 'banco ja contem adms'
+            }
+
+            const newAdm = await AdmEntity.create({
+             name,password
+            })
+
+            return newAdm
+        } catch (error) {
+            throw error
+        }
+    }
     
     async LogoutAdmService(token){
        
@@ -90,6 +112,74 @@ export class AdmService{
 
             return 'deleted'
 
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteAdmService(id){
+        try {
+            await AdmEntity.sync()
+
+            const result = await AdmEntity.findByPk(id)
+
+            if(!result){
+                return 'não encontrada'
+            }
+
+            await result.destroy()
+
+            return 'deleted'
+
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteUserService(id){
+        try {
+            await AdmEntity.sync()
+            await UserEntity.sync()
+            await MensagemEntity.sync()
+
+            const userMessages = await MensagemEntity.findAll({
+                where:{
+                    userid: id
+                }
+            })
+            
+            const result = await UserEntity.findByPk(id)
+
+            if(!result){
+                return 'não encontrada'
+            }
+
+            if(userMessages){
+                for (let message of userMessages) {
+                    await message.destroy();
+                }
+            }
+
+            await result.destroy()
+
+            return 'deleted'
+
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async showAllUserService(){
+        try {
+            await UserEntity.sync()
+
+            const allUsers = await UserEntity.findAll()
+
+            if(!allUsers){
+                return 'não encontrada'
+            }
+
+            return allUsers
         } catch (error) {
             throw error
         }

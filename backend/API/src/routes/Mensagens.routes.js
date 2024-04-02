@@ -13,7 +13,7 @@ MensagensRouter.patch("/update-message/:messageid",verifyJwt('user'), updateMess
 
 MensagensRouter.delete("/delete-message/:messageid",verifyJwt('user'), deleteMessage )
 
-MensagensRouter.get("/mensagemsDeApoio", showAllMessages)
+MensagensRouter.get("/mensagensDeApoio", showAllMessages)
 
 MensagensRouter.get("/my-messages", verifyJwt('user'), showMyMessages)
 
