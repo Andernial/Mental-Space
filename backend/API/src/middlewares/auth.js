@@ -14,7 +14,7 @@ export const verifyJwt = (rolePermission) => {
        
     
         try{
-            const decoded = verifyPromise(token, SECRET)
+            const decoded = verifyPromise(token, jwtSecret)
             const inBlackList = await BlackListedTokenEntity.findByPk(token)
     
             
