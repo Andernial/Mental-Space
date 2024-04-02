@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { AdmEntity } from "../entities/Adm.entity.js";
-import { SECRET } from '../middlewares/auth.js';
+import { jwtSecret } from "../middlewares/auth.js"
 import { BlackListedTokenEntity } from '../entities/BlackListedToken.entity.js';
 import { MensagemEntity } from '../entities/Mensagens.entity.js';
 import { UserEntity } from '../entities/User.entity.js';
@@ -18,7 +18,7 @@ export class AdmService{
             })
         
             if(adm){ 
-                const token = jwt.sign({userid : adm.id, role: 'adm'}, SECRET, { expiresIn: "10h"  })
+                const token = jwt.sign({userid : adm.id, role: 'adm'}, jwtSecret, { expiresIn: "10h"  })
                 return  {auth : true, token}
                 
             }

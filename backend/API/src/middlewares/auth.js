@@ -1,6 +1,10 @@
 import jwt from 'jsonwebtoken'
 import { BlackListedTokenEntity } from '../entities/BlackListedToken.entity.js'
-export const SECRET = 'anderApi'
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+export const jwtSecret = process.env.JWT_SECRET
 
 export const verifyJwt = (rolePermission) => {
     return async (req, res, next ) =>{

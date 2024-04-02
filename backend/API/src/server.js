@@ -1,11 +1,14 @@
 import  express  from "express"
+import dotenv from 'dotenv';
 import cors from 'cors'
 import { testConnection } from "./database/connection.js"
 import { routers } from "./routes/Index.routes.js"
 import { corsOptions } from "./middlewares/cors.js"
 
+dotenv.config();
+
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 app.use(cors(corsOptions))
 app.use(express.json())

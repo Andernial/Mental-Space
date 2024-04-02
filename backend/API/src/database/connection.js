@@ -1,9 +1,22 @@
+import dotenv from 'dotenv';
 import { Sequelize } from "sequelize";
 
+dotenv.config();
 
-export const sequelize = new Sequelize('Space', 'root', '',{
-    host: "localhost",
-    dialect: "mysql"
+
+
+const dbUser= process.env.DB_USERNAME
+const dbPassword = process.env.DB_PASSWORD
+const database = process.env.DATABASE
+const dbHost = process.env.DB_HOST
+const dbDialect= process.env.DB_DIALECT
+
+
+
+
+export const sequelize = new Sequelize(database, dbUser, dbPassword,{
+    host: dbHost,
+    dialect: dbDialect
 
 })
 

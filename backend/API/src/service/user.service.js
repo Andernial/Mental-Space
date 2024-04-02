@@ -1,6 +1,6 @@
 import { UserEntity } from "../entities/User.entity.js"
 import  jwt  from "jsonwebtoken"
-import { SECRET } from "../middlewares/auth.js"
+import { jwtSecret } from "../middlewares/auth.js"
 import { BlackListedTokenEntity } from "../entities/BlackListedToken.entity.js"
 
 
@@ -37,7 +37,7 @@ export class UserService{
 
             
                if(user){
-                 const token = jwt.sign({userid : user.id, role: 'user'}, SECRET, { expiresIn: "10h" })
+                 const token = jwt.sign({userid : user.id, role: 'user'}, jwtSecret, { expiresIn: "10h" })
                  const object = { token: token, name: user.name, email: user.email, id: user.id}
                  return object 
                 
