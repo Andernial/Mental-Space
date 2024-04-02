@@ -38,8 +38,8 @@ export class UserService{
             
                if(user){
                  const token = jwt.sign({userid : user.id, role: 'user'}, SECRET, { expiresIn: "10h" })
-                
-                 return token  
+                 const object = { token: token, name: user.name, email: user.email, id: user.id}
+                 return object 
                 
                }
                return 'não encontrado'

@@ -7,7 +7,7 @@ const UserRouter = Router();
 
 UserRouter.post('/create-user', registerUser) 
 
-UserRouter.get('/login-user', loginUser)
+UserRouter.post('/login-user', loginUser)
 
 UserRouter.get('/logout-user', verifyJwt('user'), LogoutUser)
 

@@ -14,7 +14,7 @@ export const RelaxingSongsEntity = database.define('Song', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: 'campo não pode ser vazio !'
+                msg: 'campo url não pode ser vazio !'
             },
 
             isURL: {

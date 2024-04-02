@@ -63,16 +63,39 @@ export class MensagemService{
     async showMessagesService(){
         try {
           await  MensagemEntity.sync()
+
             const mensagens = await MensagemEntity.findAll({
                 attributes:{
                     exclude: ["userid"]
                 }
             })
 
-            if(mensagens){
-                return mensagens
+            if(!mensagens){
+                return 'não encontrada'
             }
-            return 'não encontrada'
+
+           return mensagens
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async showMyMessagesService(id){
+        try {
+            await  MensagemEntity.sync()
+            const myMessages = await MensagemEntity.findAll({
+                where:{
+                    userid: id,
+                }
+            })
+
+            if(!myMessages){
+                return 'nenhuma mensagem encontrada !'
+            }
+
+            return myMessages
+
+
         } catch (error) {
             throw error
         }

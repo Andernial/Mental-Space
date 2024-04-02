@@ -1,7 +1,4 @@
 
-import { LikeEntity } from "../entities/Like.entity.js"
-import { UserEntity } from "../entities/User.entity.js"
-import { MensagemEntity } from "../entities/mensagens.entity.js"
 import { MensagemService } from "../service/mensagens.service.js"
 import { ERRORS, SUCCESS } from "../shared/messages.js"
 
@@ -62,13 +59,31 @@ const showAllMessages = async (req,res) => {
     try {
         const result = await instanceOfMessageService.showMessagesService() 
 
-        if(result !== 'não encontrada'){
-            return  res.status(200).json({messages: result})
+        if(result === 'não encontrada'){
+            return  res.status(404).json({messages: 'nenhuma mensagem encontrada '})
         }
 
-        res.status(404).json({messages: `mensagem ${ERRORS.NOT_FOUND}`})
+        res.status(200).json({messages: result})
     } catch (error) {
         res.status(400).json(error.message)
+    }
+}
+
+const showMyMessages = async (req,res) => {
+    try {
+        const id = req.userid
+
+
+        const result = await instanceOfMessageService.showMyMessagesService(id)
+
+        if(result === 'nenhuma mensagem encontrada !'){
+            return  res.status(404).json({messages: 'nenhuma mensagem encontrada'})
+        }
+
+        res.status(200).json({messages: result})
+        
+    } catch (error) {
+         res.status(400).json(error.message)
     }
 }
 
@@ -116,4 +131,4 @@ const deleteMessage = async(req,res) =>{
 
 
 
-export { createMessage, addLike, showAllMessages, updateMessage, deleteMessage }
+export { createMessage, addLike, showAllMessages, updateMessage, deleteMessage, showMyMessages }

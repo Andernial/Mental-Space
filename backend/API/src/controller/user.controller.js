@@ -44,7 +44,7 @@ const loginUser = async (req, res) => {
         if (result === 'não encontrado') {
             return res.status(401).json({ message: `usuario ${ERRORS.NOT_FOUND}` })
         }
-        res.status(200).json({ auth: true, token: result })
+        res.status(200).json({ auth: true, data : result})
 
     } catch (error) {
         res.status(400).json(error.message)

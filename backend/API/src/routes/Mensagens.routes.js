@@ -1,5 +1,5 @@
 import express from "express";
-import { addLike, createMessage, deleteMessage, showAllMessages, updateMessage } from "../controller/Mensagens.controller.js";
+import { addLike, createMessage, deleteMessage, showAllMessages, showMyMessages, updateMessage } from "../controller/mensagens.controller.js";
 import { verifyJwt } from "../middlewares/auth.js";
 // import { createNewMessage, messagelist, addLike} from "../controller/MensagensController.js";
 const MensagensRouter = express.Router();
@@ -13,8 +13,8 @@ MensagensRouter.patch("/update-message/:messageid",verifyJwt('user'), updateMess
 
 MensagensRouter.delete("/delete-message/:messageid",verifyJwt('user'), deleteMessage )
 
-
-
 MensagensRouter.get("/mensagemsDeApoio", showAllMessages)
+
+MensagensRouter.get("/my-messages", verifyJwt('user'), showMyMessages)
 
 export {MensagensRouter}

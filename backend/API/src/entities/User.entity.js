@@ -47,6 +47,10 @@ export const UserEntity = database.define('User',{
         validate: {
             notEmpty:{
                 msg: "senha não pode ser vazio!"
+            },
+            len: {
+                args: [8, 32],
+                msg: "senha deve estar entre 8 e 32 caracteres!"
             }
         },
     
