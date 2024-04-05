@@ -223,5 +223,5 @@ API:(porta se o acesso for local)Relaxing/random-music
 ```
 
 ## Considerações Finais 📦​
-A api possívelmente ainda vai passar por atualizações para melhorar e trazer mais ferramentas que atendem seu proposito !
+A api possívelmente ainda vai passar por atualizações para melhorar e trazer mais ferramentas que atendem seu proposito!
 
