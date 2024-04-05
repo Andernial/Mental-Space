@@ -11,7 +11,7 @@ routers.use('/Sites', SiteRouter)
 routers.use('/Relaxing', RelaxamentoRouter)
 routers.use('/Messages', MensagensRouter)
 routers.use('/Adm', AdmRouter)
-routers.use('/user', UserRouter)
+routers.use('/User', UserRouter)
 
 
 
