@@ -1,7 +1,7 @@
 # Mental Space API 🌌​
 
 ## 👾Tecnologias utilizadas
-node, express, cors, nodemon,sequelize,dot env lib,jsonWebToken,mysql2.
+node, express, cors, nodemon, sequelize, dot env lib, jsonWebToken lib, mysql2.
 
 ## 📗Descrição
 Esta Api foi desenvolvida como uma versão atualizada da Mental Health API : https://github.com/Andernial/Mental-Health-Api.
