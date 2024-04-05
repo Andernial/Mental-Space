@@ -8,7 +8,7 @@ AdmRouter.post('/registerAdm-first', registerFirstAdm)
 
 AdmRouter.post('/create-adm',verifyJwt('adm'), registerAdm )
 
-AdmRouter.get('/login-adm', loginAdm )
+AdmRouter.post('/login-adm', loginAdm )
 
 AdmRouter.get('/logout-adm', verifyJwt('adm'), logoutAdm)
 
