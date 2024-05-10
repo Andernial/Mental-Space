@@ -8,7 +8,7 @@ Esta API foi desenvolvida como uma versão atualizada da Mental Health API : htt
 
 A API foi refatorada para atender melhor as necessidades de um deploy para o projeto mental space, o front pode ser acessado aqui : https://github.com/Andernial/Mental-Space-Front
 
-Com esta atualização foi possível realizar o deploy da API utilizando o railway. Você pode acessar a API e suas rotas aqui : https://mental-space-api.up.railway.app + /rota.
+Com esta atualização foi possível realizar o deploy da API utilizando o railway. Você pode acessar a API e suas rotas aqui : https://mental-space-api.up.railway.app + /rota. *se não rodar provavelmente o deploy atingiu o limite temporario(tente novamente outra hora)*
 
 
 ## ➡️Atualização mais Recente 
