@@ -6,7 +6,7 @@ node, express, cors, nodemon, sequelize, dot env lib, jsonWebToken lib, mysql2.
 ## 📗Descrição
 Esta API foi desenvolvida como uma versão atualizada da Mental Health API : https://github.com/Andernial/Mental-Health-Api.
 
-A API foi refatorada para atender melhor as necessidades de um deploy para o projeto mental space, o front pode ser acessado aqui : *deploy atingiu o limite temporário*
+A API foi refatorada para atender melhor as necessidades de um deploy para o projeto mental space, o repositório do front pode ser acessado aqui : https://github.com/Andernial/Mental-Space-Front
 
 Com esta atualização foi possível realizar o deploy da API utilizando o railway. Você pode acessar a API e suas rotas aqui : *deploy atingiu o limite temporário*
 
