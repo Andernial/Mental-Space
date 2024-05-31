@@ -10,14 +10,14 @@ const dbPassword = process.env.DB_PASSWORD
 const database = process.env.DATABASE
 const dbHost = process.env.DB_HOST
 const dbPort = process.env.DB_PORT
-
+const dbDialect = process.env.DB_DIALECT
 
 
 
 export const sequelize = new Sequelize(database, dbUser, dbPassword,{
     host: dbHost,
     port: dbPort,
-    dialect: 'mysql'
+    dialect: dbDialect
 
 })
 
