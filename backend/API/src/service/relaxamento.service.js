@@ -9,7 +9,7 @@ export class relaxamentoService{
             await RelaxingSongsEntity.sync()
 
             const randomSong = await RelaxingSongsEntity.findAll({
-                order: sequelize.fn('random()'),
+                order: sequelize.literal('RANDOM()'),
                  limit: 1
             })
 
@@ -28,7 +28,7 @@ export class relaxamentoService{
             await RelaxingSoundEntity.sync()
 
             const randomSound = await RelaxingSoundEntity.findAll({
-                order: sequelize.fn('random()'),
+                order: sequelize.literal('RANDOM()'),
                  limit: 1
             })
 
