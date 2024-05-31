@@ -1,4 +1,4 @@
-# Mental Space API 🌌​
+# Mental Space API 🌌​ --- atualizando
 
 ## 👾Tecnologias utilizadas
 node, express, cors, nodemon, sequelize, dot env lib, jsonWebToken lib, mysql2.
